@@ -1,0 +1,123 @@
+<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport color="indigo"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    
+      <mat-toolbar color="accent" class="side-bar"> 
+      
+        <img src="assets/logo.png" width="40" height="40"> 
+        <span class="mat-toolbar-text">Accenture </span>
+      </mat-toolbar>
+      
+
+
+
+    <mat-nav-list class="padding-top-0">
+  
+
+          <mat-divider></mat-divider>
+
+      <div class="container-fluid hover"> 
+        <div class="row">
+          <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+              <mat-icon routerLink="/home" class="aligned-with-icon">home</mat-icon> 
+          </div>
+
+          <div class="col-10">
+              <a mat-list-item routerLink="/home" class="anchor">Home</a>
+          </div>
+           
+        </div>
+        
+      </div>
+      <mat-divider></mat-divider>
+
+      <div class="container-fluid hover"> 
+          <div class="row">
+            <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+                <mat-icon routerLink="/reserve-space" class="aligned-with-icon">apps</mat-icon> 
+            </div>
+  
+            <div class="col-10">
+                <a mat-list-item routerLink="/reserve-space">Reserve Space</a>
+            </div>
+             
+          </div>
+          
+        </div>
+        <mat-divider></mat-divider>
+    
+        <div class="container-fluid hover"> 
+            <div class="row">
+              <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+                  <mat-icon routerLink="/myreservations" class="aligned-with-icon">event_available</mat-icon> 
+              </div>
+    
+              <div class="col-10">
+                  <a mat-list-item routerLink="/myreservations">My Reservations</a>
+              </div>
+               
+            </div>
+            
+          </div>
+          <mat-divider></mat-divider>
+    
+          <div class="container-fluid hover"> 
+              <div class="row">
+                <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+                    <mat-icon routerLink="/contactus" class="aligned-with-icon">people</mat-icon> 
+                </div>
+      
+                <div class="col-10">
+                    <a mat-list-item routerLink="/contactus">Contact Us</a>
+                </div>
+                 
+              </div>
+              
+            </div>
+            <mat-divider></mat-divider>
+          
+    
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="example-fill-main-space"></span>
+      <span class="content">Reserve Space</span>
+      
+
+     
+      <span class="example-fill-remaining-space"></span>
+      <div class="dropdown">
+          <button class="dropbtn"><mat-icon class="menu_icon">account_circle</mat-icon> </button>
+          
+        </div>
+        
+<!--sign in-->
+  <div *ngIf="appear()"> <button mat-button color="warn" style="font-size: medium" (click)="signIn()" id="signIn" >Sign in!</button></div>
+  
+  <span *ngIf="isLoggedIn==='true'"> <button mat-button color="warn" style="font-size: medium" (click)="logout()" >logout</button></span>
+ 
+
+ 
+    
+    </mat-toolbar>
+
+      <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+

@@ -1,0 +1,231 @@
+.sidenav-container {
+  height: 100%;
+  
+}
+
+.sidenav {
+  width: 225px;
+  background: #FAFAFA;
+  
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 15px;
+  display: flex;
+  font-size:200%;
+
+}
+
+.side-bar{
+  top: 0;
+  z-index: 1;
+  padding: 15px;
+}
+.aligned-with-icon{
+   position: absolute;
+  margin-top: 10px;
+  margin-right: 20px; 
+   
+  
+}
+.mat-sidenav-content{
+  background:#ECEFF1;
+  
+}
+.mat-list-item-content{
+  font-display: 5px;
+  padding: 0px;
+  padding-right: 0px;
+  padding-left: 50px;
+  
+}
+
+.padding-top-0{
+  padding-top:0px;
+}
+
+.span.content{
+  font-size: 125%;
+text-align-last: center;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.example-fill-main-space{
+  flex: 1 1 auto;
+}
+
+.hover:hover{
+  background: rgba(0, 0, 0, 0.04);
+}
+
+a:hover{
+  background:none !important;
+}
+
+mat-icon:hover{
+  cursor: pointer;
+}
+.aligned-with-login{
+   flex: 1 8 none;
+}
+
+.anchor{
+  display: block;
+  height: 48px;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  padding: 0;
+}
+
+.anchor:active{
+  border:none;
+}
+.mat-toolbar-text{
+  color: #536dfe;
+ 
+    font: 500 25px/35px Roboto, "Helvetica Neue", sans-serif;
+    margin: 0;
+}
+
+.mat-toolbar.mat-accent {
+  background: #536dfe;
+  color: #303F9F;
+}
+
+.mat-button.mat-warn, .mat-icon-button.mat-warn, .mat-stroked-button.mat-warn {
+  color: white;
+}
+
+.navbar-text{
+  font-size: 40%;
+}
+
+
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+  height: 25%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  display: flex;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+.dropbtn {
+  background-color: #673ab7;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #673ab7;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 4px 6px;
+  text-decoration: none;
+  display: block;
+  font-size: 50%;
+}
+
+.mat-toolbar.mat-primary[_ngcontent-xbt-c1] {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 155px;
+  display: flex;
+  font-size: 100%;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #673ab7;}
+
+.menu_icon{
+  position: absolute;
+  margin-top: -15px;
+  margin-right: 20px; 
+  flex: 1 1 auto;
+   
+}
+
+.hide{
+  display:none;
+}
+
+.show{
+  display:block;
+}

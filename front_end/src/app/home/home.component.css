@@ -1,0 +1,53 @@
+.example-card {
+    max-width: 400px;
+   flex: 1 1 auto;
+  }
+  
+  .example-header-image {
+    background-image: url('https://assets/logo.png');
+    background-size: cover;
+    position: relative;
+  }
+  .first{
+    flex: 25%
+  }
+  .mat-tab {
+    padding-top: 9px;
+    padding-left: 13px;
+    left: 13px;
+    right: 12px;
+    bottom: 8px;
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    flex-basis: 100%;
+  }
+  
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: whitesmoke;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 50%;
+    margin-left:10%;
+    
+}
+
+.home{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: whitesmoke;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  width: 75%;
+  margin-left:10%;
+}

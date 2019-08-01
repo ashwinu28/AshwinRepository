@@ -1,0 +1,23 @@
+.body_text{
+    margin-top:25px;
+}
+.body_help{
+    margin-top:25px;
+}
+.card_container{
+    width:50%;
+}
+.firstname{
+    width:100%;
+}
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 4px;
+    width: 100%;
+}
+.form_field{
+    width:100%;
+}

@@ -1,0 +1,66 @@
+
+
+<mat-toolbar>Your Reservations</mat-toolbar>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!(dataSource === null || dataSource === undefined)">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef> Start Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.startTime}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="endTime">
+      <th mat-header-cell *matHeaderCellDef> End Time </th>
+      <td mat-cell *matCellDef="let reservation"> {{reservation.endTime}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="tower">
+        <th mat-header-cell *matHeaderCellDef> Tower </th>
+        <td mat-cell *matCellDef="let element"> {{element.meetingRoom.building.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="roomNo">
+        <th mat-header-cell *matHeaderCellDef> RoomNo </th>
+        <td mat-cell *matCellDef="let element"> {{element.meetingRoom.roomNo}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="event_name">
+        <th mat-header-cell *matHeaderCellDef> Event Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.event_name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="event_type">
+        <th mat-header-cell *matHeaderCellDef> Event Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.event_type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="info">
+        <th mat-header-cell *matHeaderCellDef> info </th>
+        <td mat-cell *matCellDef="let element"> {{element.info}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="register_email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.register.email}} </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <div *ngIf="(dataSource === null || dataSource === undefined)">
+
+    <mat-card id="card">you currently do not have any reservations</mat-card>
+
+    </div>

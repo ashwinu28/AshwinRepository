@@ -1,0 +1,192 @@
+
+<br/>
+
+<div>
+    <mat-toolbar>Reserve a Meeting Room</mat-toolbar>
+</div>
+
+<div class="container-fluid">
+
+  <div >
+    <div>
+
+        <mat-horizontal-stepper [linear]="!isLinear" #stepper id="stepper" (selectionChange)="stepChanged($event, stepper);" >
+        
+        
+             <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Select Tower</ng-template>
+
+
+                <mat-toolbar class="toolbar">Select a Date</mat-toolbar>
+                <mat-form-field class="date">
+                  <input id="date"  matInput [matDatepicker]="picker" [min]="todaydate"  readonly placeholder="Choose a date" formControlName="firstCtrlDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="firstFormGroup.controls['firstCtrlDate'].hasError('incorrect')">Date cannot be blank</mat-error>
+                  <!-- <mat-error *ngIf="error.isError">{{ error.errorMessage }}</mat-error> -->
+                </mat-form-field>
+              
+               <div>
+      <mat-toolbar class="toolbar">Starting time & Finish Time</mat-toolbar>
+                
+      <mat-form-field class="time">
+          <input id="start" (change)="captureDate($event)" matInput [ngxTimepicker]="pickerStart" placeholder="Start Time" formControlName="firstCtrlStart" required>
+          <ngx-material-timepicker #pickerStart></ngx-material-timepicker>
+          <mat-error *ngIf="firstFormGroup.controls['firstCtrlStart'].hasError('incorrect')">Start Time is required</mat-error>
+      </mat-form-field>
+
+              <mat-form-field class="time">
+                  <input id="finish" (change)="captureDate($event)"  matInput [ngxTimepicker]="pickerTime" placeholder="Finish Time" formControlName="firstCtrlEnd" required>
+                  <ngx-material-timepicker #pickerTime></ngx-material-timepicker>
+                  <mat-error *ngIf="firstFormGroup.controls['firstCtrlEnd'].hasError('incorrect')">End Time is required</mat-error>
+                  <mat-error *ngIf="firstFormGroup.controls['firstCtrlEnd'].hasError('invalid')">End Time should be greater than start time</mat-error>
+                  
+              </mat-form-field>
+                </div>
+
+            
+                
+                
+                <mat-toolbar class="toolbarTower">Select Tower</mat-toolbar>
+        <mat-form-field class="tower">
+            <mat-label >Towers</mat-label>
+           <mat-select id="tower" (change)="captureDate($event)" class="tower" formControlName="firstCtrlTower" required>
+           <mat-option *ngFor="let tower of buildingList" [value]="tower.name">
+                        {{tower.name}}
+          </mat-option>
+         
+          </mat-select>
+          <mat-error *ngIf="firstFormGroup.controls['firstCtrlTower'].hasError('incorrect')">please select a tower</mat-error>
+        </mat-form-field>
+                
+                
+                 <div>
+                 
+                  <button mat-button  (click)="captureDate(stepper)" >Next</button>
+                </div>
+              </form>
+            </mat-step>
+        
+            <mat-step [stepControl]="secondFormGroup">
+                 <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Select Room</ng-template>
+                 
+                 
+            <app-calendar id="kendo" class="calendar_size" [towers]="towerSelect" [dateOut]="dateSelect"></app-calendar>
+
+
+            
+            <mat-toolbar class="toolbarTower">Select Room</mat-toolbar>
+            <mat-form-field class="room">
+                <mat-label >Rooms</mat-label>
+               <mat-select id="room" class="room" name="room" formControlName="secondCtrlRoom" required>
+               <mat-option *ngFor="let room of MeetingRoomList" [value]="room.roomNo" [disabled]="room.flag">
+                            {{room.roomNo}} 
+              </mat-option>
+              </mat-select>
+              <mat-error *ngIf="secondFormGroup.controls['secondCtrlRoom'].hasError('incorrect')">please select a room</mat-error>
+            </mat-form-field> 
+
+           
+                 
+            <div>
+              
+                <button mat-button  (click)="captureDate2(stepper)">Next</button>
+              </div>
+                  </form>
+                </mat-step>
+
+
+
+
+
+
+
+         <mat-step [stepControl]="thirdFormGroup">
+              <form [formGroup]="thirdFormGroup" (submit)="onSubmit($event)">
+                <ng-template matStepLabel>Reservation Details</ng-template>
+                
+                <mat-toolbar class="toolbar">Event description</mat-toolbar>
+              <br/>
+        
+            <div>
+               
+             <mat-form-field>
+                <input id="event_name" matInput placeholder="Event Name" formControlName="thirdCtrlName" required/>
+                <mat-error *ngIf="thirdFormGroup.controls['thirdCtrlName'].hasError('incorrect')">please enter event name</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="event">
+                  <input id="event_type" matInput placeholder="Event Type" formControlName="thirdCtrlType" required/>
+                  <mat-error *ngIf="thirdFormGroup.controls['thirdCtrlType'].hasError('incorrect')">please enter event type</mat-error>
+                </mat-form-field>
+            </div>
+        
+          <div><mat-form-field>
+            <input matInput  placeholder="WIFI connection" value="Available"formControlName="thirdCtrlWifi" required/>
+            <mat-error *ngIf="thirdFormGroup.controls['thirdCtrlWifi'].hasError('incorrect')">WIFI already available</mat-error>
+          </mat-form-field>
+
+          <div><mat-form-field>
+            <input matInput placeholder="Client Name"  formControlName="thirdCtrlClient" required/>
+            <mat-error *ngIf="thirdFormGroup.controls['thirdCtrlClient'].hasError('incorrect')">please enter attending client name if any</mat-error>
+          </mat-form-field>
+        </div>
+
+        
+
+        <mat-form-field>
+            <textarea matInput placeholder="Any additional info?" formControlName="thirdCtrlInfo" required></textarea>
+            <mat-error *ngIf="thirdFormGroup.controls['thirdCtrlInfo'].hasError('incorrect')">field cannot be blank</mat-error>
+          </mat-form-field>
+
+          
+        <div><mat-form-field>
+            <input matInput placeholder="Any public attendance?" formControlName="thirdCtrlPublic" required/>
+            <mat-error *ngIf="thirdFormGroup.controls['thirdCtrlPublic'].hasError('incorrect')">field cannot be blank</mat-error>
+          </mat-form-field>
+    
+        </div>
+
+    </div>
+        
+    
+             
+                
+                <div>
+                  
+                  <button mat-button matStepperNext type="submit" >Submit</button>
+                </div>
+              </form>
+            </mat-step>
+        
+        
+        
+            
+         
+        
+            <!-- <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+             You arrived at the last step of your booking
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+                <button mat-button (submit)="onSubmit()">Submit</button>
+              </div>
+            </mat-step> -->
+          </mat-horizontal-stepper> 
+
+    </div>
+  </div>
+
+
+</div>
+
+
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  
+  
+

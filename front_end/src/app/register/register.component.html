@@ -1,0 +1,58 @@
+<form (submit)="onSubmit($event)">
+    <div class="form-container">
+         
+          <mat-form-field>
+              <input id="name" matInput placeholder="Name" required [formControl]="NameFormControl">   
+              <mat-error *ngIf="NameFormControl.invalid">{{getRequiredErrorMessage('name')}}</mat-error>
+            </mat-form-field>
+
+
+
+        <mat-form-field>
+          <input id ="email" matInput placeholder="Email" required [formControl]="EmailFormControl" (change)="validEmail($event)">   
+          <mat-error *ngIf="EmailFormControl.hasError('email')">
+              Please enter valid email address
+            </mat-error>
+            <mat-error *ngIf = "EmailFormControl.hasError('required')"> This field is required</mat-error>
+        
+           <mat-error *ngIf="EmailFormControl.hasError('incorrect')">
+            email already exist
+
+          </mat-error> 
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input id = "phoneNo" matInput placeholder="Phone Number" required [formControl]="PhoneFormControl">
+         <mat-error *ngIf="PhoneFormControl.invalid">{{getPhoneErrorMessage('phone')}}</mat-error> 
+        </mat-form-field>
+        
+      
+        <mat-form-field >
+            <input id="password" matInput  placeholder="New password" [type]="hide ? 'password' 
+              : 'text'" [formControl]="passwordFormControl"  (change)="validate($event)" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+              'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Please enter your new password
+             </mat-error>
+          </mat-form-field>
+
+          <mat-form-field >
+              <input id="confirmPassword" matInput  placeholder="Confirm password" [type]="hide ? 
+                   'password' : 'text'" [formControl]="confirmPasswordFormControl" (change)="validatePassword($event)"
+                     required>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+              <mat-error *ngIf="flag"  >
+                 Password does not match
+              </mat-error>
+              
+          </mat-form-field>
+    
+          <div class="d-flex justify-content-center" > <button mat-stroked-button>Register</button></div>
+    
+      </div>
+    </form>
+    
+
+   
+    <div class="d-flex justify-content-left"> <button mat-stroked-button (click)="openBottomSheet()"> Need Help?</button></div>

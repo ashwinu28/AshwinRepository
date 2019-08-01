@@ -1,0 +1,13 @@
+
+.kendo-scheduler .k-event, .k-event {
+    background-color: #1A237E;
+    color: #fff;
+}
+table{
+
+width:100%;
+}
+.card{
+    width:10%;
+    position: flex;
+}

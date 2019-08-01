@@ -1,0 +1,37 @@
+.form-container{
+    width: 100%;
+}
+.image{
+    display: flex;
+}
+.head{
+    display:flex;
+    align-content: center;
+}
+.form-container{
+    width: 100%;
+}
+.mat-form-field {
+        display: inline-block;
+        position: relative;
+        text-align: left;
+        width: 100%;
+}
+.icon_password{
+
+    padding-left: 25% 
+}
+.mat-form-field-infix{
+    text-align-last: auto;
+}
+.icon_email{
+    padding-left: 15%;
+}
+.icon_email{
+    
+        position: sticky;
+        margin-top: 0px;
+        margin-left: 250px; /* optional */
+        margin-right: 50px;
+    }
+
